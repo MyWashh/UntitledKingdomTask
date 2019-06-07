@@ -123,6 +123,7 @@
 				A4802C171D8ACA5F0032AF25 /* Sources */,
 				A4802C181D8ACA5F0032AF25 /* Frameworks */,
 				A4802C191D8ACA5F0032AF25 /* Resources */,
+				C036C19522AB022100ED5EB3 /* Swift Lint */,
 			);
 			buildRules = (
 			);
@@ -185,6 +186,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		C036C19522AB022100ED5EB3 /* Swift Lint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Recruitment-iOS",
+			);
+			name = "Swift Lint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n        if which swiftlint >/dev/null; then\n            cd $SRCROOT/Recruitment-iOS\n            swiftlint\n        else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n        exit 1\n    fi\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A4802C171D8ACA5F0032AF25 /* Sources */ = {
