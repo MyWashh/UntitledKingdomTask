@@ -24,7 +24,7 @@ class NetworkingManager: NSObject {
     func downloadItems() {
         request(filename: "Items.json") { dictionary in
             let data = dictionary["data"]
-            let array = data as! Array<Dictionary<String, AnyObject>>
+            guard let array = data as? Array<Dictionary<String, AnyObject>> else { return }
             var result:[ItemModel] = []
             for item in array {
                 let name = item["attributes"]?["name"] as? String
