@@ -7,67 +7,39 @@
 //
 
 import UIKit
-
-protocol NetworkingManagerDelegate {
-    
-    func downloadedItems(_ items:[ItemModel])
-    func downloadedItemDetails(_ itemDetails:ItemDetailsModel)
-    
-}
-
 class NetworkingManager: NSObject {
 
     static var sharedManager = NetworkingManager()
-    
-    var delegate:NetworkingManagerDelegate?
-    
-    func downloadItems() {
+
+    func downloadItems(completion: @escaping (([ItemModel]) -> Void)) {
         request(filename: "Items.json") { dictionary in
-            let data = dictionary["data"]
-            guard let array = data as? Array<Dictionary<String, AnyObject>> else { return }
-            var result:[ItemModel] = []
-            for item in array {
-                let name = item["attributes"]?["name"] as? String
-                let colorString = item["attributes"]?["color"] as? String
-                var color:UIColor?
-                switch colorString! {
-                case "Red": color = UIColor.red
-                case "Green": color = UIColor.green
-                case "Blue": color = UIColor.blue
-                case "Yellow": color = UIColor.yellow
-                case "Purple": color = UIColor.purple
-                default: color = UIColor.black
-                }
-                let itemModel = ItemModel(name: name!, color: color!)
-                result.append(itemModel)
-            }
-            self.delegate?.downloadedItems(result)
+            guard let itemsDictionary = dictionary["data"] as? [[String: AnyObject]] else { return }
+            let items = self.transform(itemsDictionary: itemsDictionary)
+            completion(items)
         }
     }
-    
-    func downloadItemWithID(_ id:String) {
+
+    private func transform(itemsDictionary: [[String: AnyObject]]) -> [ItemModel] {
+        var items: [ItemModel] = []
+        for item in itemsDictionary {
+            if let item = ItemModel(item: item) {
+                items.append(item)
+            }
+        }
+        return items
+    }
+
+    func downloadItemWithID(_ id: String, completion: @escaping ((ItemDetailsModel) -> Void)) {
         let filename = "Item\(id).json"
         request(filename: filename) { dictionary in
-            let data = dictionary["data"]
-            let attributes = data!["attributes"]! as! Dictionary<String, AnyObject>
-            let name = attributes["name"] as? String
-            let colorString = attributes["color"] as? String
-            var color:UIColor?
-            switch colorString! {
-            case "Red": color = UIColor.red
-            case "Green": color = UIColor.green
-            case "Blue": color = UIColor.blue
-            case "Yellow": color = UIColor.yellow
-            case "Purple": color = UIColor.purple
-            default: color = UIColor.black
-            }
-            let desc = attributes["desc"] as? String
-            let itemModelDetails = ItemDetailsModel(name: name!, color: color!, desc: desc!)
-            self.delegate?.downloadedItemDetails(itemModelDetails)
+            guard let data = dictionary["data"]  as? [String: AnyObject],
+                let item = ItemModel(item: data),
+                let itemDetailsModel = ItemDetailsModel(item: item, details: data) else { return }
+            completion(itemDetailsModel)
         }
     }
-    
-    private func request(filename:String, completionBlock:@escaping (Dictionary<String, AnyObject>) -> Void) {
+
+    private func request(filename: String, completionBlock: @escaping ([String: AnyObject]) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             if let dictionary = JSONParser.jsonFromFilename(filename) {
                 completionBlock(dictionary)
@@ -76,5 +48,4 @@ class NetworkingManager: NSObject {
             }
         }
     }
-    
 }

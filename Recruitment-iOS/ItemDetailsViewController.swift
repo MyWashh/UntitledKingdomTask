@@ -8,10 +8,9 @@
 
 import UIKit
 
-class ItemDetailsViewController: UIViewController, NetworkingManagerDelegate {
+class ItemDetailsViewController: UIViewController {
     weak var tableViewController: ItemsListTableViewController?
     let selectedItem: ItemModel
-    let selectedIndex: Int
 
     let textView: UITextView = {
         let textView = UITextView()
@@ -21,8 +20,7 @@ class ItemDetailsViewController: UIViewController, NetworkingManagerDelegate {
         return textView
     }()
 
-    init(selectedItem: ItemModel, index: Int) {
-        self.selectedIndex = index
+    init(selectedItem: ItemModel) {
         self.selectedItem = selectedItem
         super.init(nibName: nil, bundle: nil)
     }
@@ -37,20 +35,13 @@ class ItemDetailsViewController: UIViewController, NetworkingManagerDelegate {
         let title = selectedItem.name
         self.title = TitleEditor.modifyTitle(title: title)
         self.view.backgroundColor = selectedItem.color
-        NetworkingManager.sharedManager.downloadItemWithID(String(selectedIndex))
+        NetworkingManager.sharedManager.downloadItemWithID(selectedItem.id, completion: { item in
+            self.textView.text = item.desc
+        })
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-          NetworkingManager.sharedManager.delegate = self
-    }
-
-    func downloadedItems(_ items: [ItemModel]) {
-        
-    }
-    
-    func downloadedItemDetails(_ itemDetails: ItemDetailsModel) {
-        textView.text = itemDetails.desc
     }
 
     func setupLayout() {

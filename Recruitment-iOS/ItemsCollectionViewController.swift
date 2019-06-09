@@ -1,11 +1,9 @@
 import UIKit
 
-class CollectionViewController: UICollectionViewController {
+class ItemsSheetCollectionViewController: UICollectionViewController {
     override init(collectionViewLayout layout: UICollectionViewLayout) {
         super.init(collectionViewLayout: layout)
-        title = "Collection List"
-        let item = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(didTapBack))
-        navigationItem.leftBarButtonItem = item
+        title = "Sheet"
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -19,11 +17,5 @@ class CollectionViewController: UICollectionViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let item = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(didTapBack))
-        navigationItem.leftBarButtonItem = item
-    }
-
-    @objc func didTapBack() {
-        tabBarController?.navigationController?.popToRootViewController(animated: true)
     }
 }

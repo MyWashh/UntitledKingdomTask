@@ -8,18 +8,17 @@
 
 import UIKit
 
-class ItemsListTableViewController: UITableViewController, NetworkingManagerDelegate {
-    
+class ItemsListTableViewController: UITableViewController {
+
     var itemModels: [ItemModel] = []
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBars()
-        NetworkingManager.sharedManager.delegate = self
     }
 
     func setupNavigationBars() {
-        title = "List"
+        title = ControllersTitles.ItemsListTableViewController
         tabBarController?.title = title
         tabBarController?.navigationController?.isNavigationBarHidden = false
         navigationController?.isNavigationBarHidden = true
@@ -28,21 +27,15 @@ class ItemsListTableViewController: UITableViewController, NetworkingManagerDele
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        NetworkingManager.sharedManager.downloadItems()
+        NetworkingManager.sharedManager.downloadItems { items in
+            self.itemModels = items
+            self.tableView.reloadData()
+        }
         tableView.register(UITableViewCell.self)
-    }
-
-    func downloadedItems(_ items: [ItemModel]) {
-        self.itemModels = items
-        self.tableView.reloadData()
-    }
-    
-    func downloadedItemDetails(_ itemDetails: ItemDetailsModel) {
-        
     }
 }
 
-//MARK: TableView delegate and datasource
+// MARK: TableView delegate and datasource
 extension ItemsListTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return itemModels.count
@@ -57,7 +50,7 @@ extension ItemsListTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = ItemDetailsViewController(selectedItem: itemModels[indexPath.row], index: indexPath.row)
+        let viewController = ItemDetailsViewController(selectedItem: itemModels[indexPath.row])
         navigationController?.isNavigationBarHidden = false
         tabBarController?.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(viewController, animated: true)

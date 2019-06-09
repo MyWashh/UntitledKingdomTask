@@ -6,9 +6,12 @@ class TabBarController: UITabBarController {
         setViewControllers(prepareControllers(), animated: true)
     }
 
-    func prepareControllers() -> [UIViewController]  {
+    func prepareControllers() -> [UIViewController] {
         let firstNavigationController = UINavigationController(rootViewController: ItemsListTableViewController())
-        let secondNavigationController = UINavigationController(rootViewController: CollectionViewController(collectionViewLayout: UICollectionViewLayout()))
+
+        let collectionViewController = ItemsSheetCollectionViewController(collectionViewLayout: UICollectionViewLayout())
+        let secondNavigationController = UINavigationController(rootViewController: collectionViewController)
+
         let controllers = [firstNavigationController, secondNavigationController]
         return controllers
     }

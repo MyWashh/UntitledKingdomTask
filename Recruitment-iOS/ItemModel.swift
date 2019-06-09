@@ -8,14 +8,17 @@
 
 import UIKit
 
-class ItemModel {
+struct ItemModel {
+    var name: String
+    var color: UIColor
+    var id: String
 
-    var name:String
-    var color:UIColor
-    
-    init(name:String, color:UIColor) {
-        self.name  = name
-        self.color = color
+    init?(item: [String: AnyObject]) {
+        guard let name = item["attributes"]?["name"] as? String,
+            let colorString = item["attributes"]?["color"] as? String,
+            let id = item["id"] as? String else { return nil }
+        self.id = id
+        self.name = name
+        self.color = Colors(colorString).uiColor
     }
-    
 }

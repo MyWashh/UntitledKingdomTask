@@ -6,6 +6,6 @@ struct CommonStrings {
     static let back = "Back"
 }
 
-struct ControllerTitles {
+struct ControllersTitles {
     static let ItemsListTableViewController = "List"
 }
