@@ -28,10 +28,12 @@
 		C03FDD5022AB1042009EE443 /* UIKit.UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD4F22AB1042009EE443 /* UIKit.UITableView.swift */; };
 		C03FDD5222AB10EB009EE443 /* UIKit.UICollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5122AB10EB009EE443 /* UIKit.UICollectionView.swift */; };
 		C03FDD5622AB8873009EE443 /* TitleEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5522AB8873009EE443 /* TitleEditor.swift */; };
-		C03FDD5922ABA4DF009EE443 /* ItemsCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5822ABA4DF009EE443 /* ItemsCollectionViewController.swift */; };
+		C03FDD5922ABA4DF009EE443 /* ItemsSheetCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5822ABA4DF009EE443 /* ItemsSheetCollectionViewController.swift */; };
 		C03FDD5B22ABA911009EE443 /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5A22ABA911009EE443 /* TabBarController.swift */; };
 		C03FDD5D22ABACBB009EE443 /* ItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5C22ABACBB009EE443 /* ItemDetailsViewController.swift */; };
 		C03FDD5F22AC5525009EE443 /* ColorsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5E22AC5525009EE443 /* ColorsHandler.swift */; };
+		C03FDD6322AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD6222AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift */; };
+		C03FDD6522AD8A20009EE443 /* ItemsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD6422AD8A20009EE443 /* ItemsListTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -58,10 +60,12 @@
 		C03FDD4F22AB1042009EE443 /* UIKit.UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.UITableView.swift; sourceTree = "<group>"; };
 		C03FDD5122AB10EB009EE443 /* UIKit.UICollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKit.UICollectionView.swift; sourceTree = "<group>"; };
 		C03FDD5522AB8873009EE443 /* TitleEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleEditor.swift; sourceTree = "<group>"; };
-		C03FDD5822ABA4DF009EE443 /* ItemsCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsCollectionViewController.swift; sourceTree = "<group>"; };
+		C03FDD5822ABA4DF009EE443 /* ItemsSheetCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsSheetCollectionViewController.swift; sourceTree = "<group>"; };
 		C03FDD5A22ABA911009EE443 /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		C03FDD5C22ABACBB009EE443 /* ItemDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailsViewController.swift; sourceTree = "<group>"; };
 		C03FDD5E22AC5525009EE443 /* ColorsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsHandler.swift; sourceTree = "<group>"; };
+		C03FDD6222AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsSheetCollectionViewCell.swift; sourceTree = "<group>"; };
+		C03FDD6422AD8A20009EE443 /* ItemsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,6 +140,7 @@
 			children = (
 				C036C19722AB043300ED5EB3 /* StartViewController.swift */,
 				C03FDD5A22ABA911009EE443 /* TabBarController.swift */,
+				C03FDD5C22ABACBB009EE443 /* ItemDetailsViewController.swift */,
 				C03FDD4C22AB0D01009EE443 /* TableViewController */,
 				C03FDD5722ABA4C2009EE443 /* CollectionViewController */,
 			);
@@ -167,7 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				A4802C361D8ACB320032AF25 /* ItemsListTableViewController.swift */,
-				C03FDD5C22ABACBB009EE443 /* ItemDetailsViewController.swift */,
+				C03FDD6422AD8A20009EE443 /* ItemsListTableViewCell.swift */,
 			);
 			name = TableViewController;
 			sourceTree = "<group>";
@@ -175,7 +180,8 @@
 		C03FDD5722ABA4C2009EE443 /* CollectionViewController */ = {
 			isa = PBXGroup;
 			children = (
-				C03FDD5822ABA4DF009EE443 /* ItemsCollectionViewController.swift */,
+				C03FDD5822ABA4DF009EE443 /* ItemsSheetCollectionViewController.swift */,
+				C03FDD6222AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift */,
 			);
 			name = CollectionViewController;
 			sourceTree = "<group>";
@@ -285,8 +291,10 @@
 				C03FDD4E22AB100E009EE443 /* ReusableView.swift in Sources */,
 				C036C19822AB043300ED5EB3 /* StartViewController.swift in Sources */,
 				C03FDD5B22ABA911009EE443 /* TabBarController.swift in Sources */,
+				C03FDD6322AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift in Sources */,
 				C036C19B22AB04F600ED5EB3 /* CommonStrings.swift in Sources */,
-				C03FDD5922ABA4DF009EE443 /* ItemsCollectionViewController.swift in Sources */,
+				C03FDD5922ABA4DF009EE443 /* ItemsSheetCollectionViewController.swift in Sources */,
+				C03FDD6522AD8A20009EE443 /* ItemsListTableViewCell.swift in Sources */,
 				C03FDD5222AB10EB009EE443 /* UIKit.UICollectionView.swift in Sources */,
 				C03FDD5622AB8873009EE443 /* TitleEditor.swift in Sources */,
 				A4802C511D8ACB840032AF25 /* JSONParser.swift in Sources */,

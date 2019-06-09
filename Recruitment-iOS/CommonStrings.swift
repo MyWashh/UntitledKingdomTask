@@ -7,5 +7,6 @@ struct CommonStrings {
 }
 
 struct ControllersTitles {
-    static let ItemsListTableViewController = "List"
+    static let itemsListTableViewController = "List"
+    static let itemsSheetCollectionViewController = "Sheet"
 }

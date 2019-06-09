@@ -9,7 +9,6 @@
 import UIKit
 
 class ItemDetailsViewController: UIViewController {
-    weak var tableViewController: ItemsListTableViewController?
     let selectedItem: ItemModel
 
     let textView: UITextView = {

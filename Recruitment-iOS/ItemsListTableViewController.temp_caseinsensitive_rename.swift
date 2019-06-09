@@ -10,7 +10,7 @@ import UIKit
 
 class ItemsListTableViewController: UITableViewController {
 
-    var items: [ItemModel] = []
+    var itemModels: [ItemModel] = []
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -26,9 +26,9 @@ class ItemsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.register(ItemsListTableViewCell.self)
+        tableView.register(UITableViewCell.self)
         NetworkingManager.sharedManager.downloadItems { items in
-            self.items = items
+            self.itemModels = items
             self.tableView.reloadData()
         }
     }
@@ -37,20 +37,19 @@ class ItemsListTableViewController: UITableViewController {
 // MARK: TableView delegate and datasource
 extension ItemsListTableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return itemModels.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell: ItemsListTableViewCell = tableView.dequeueReusableCell(forIndexPath: indexPath)
-        let itemModel = items[indexPath.row]
+        let cell = tableView.dequeueReusableCell(forIndexPath: indexPath)
+        let itemModel = itemModels[indexPath.row]
         cell.backgroundColor = itemModel.color
-        cell.nameLabel.text = itemModel.name
-        cell.previewTextLabel.text = itemModel.previewText
+        cell.textLabel?.text = itemModel.name
         return cell
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = ItemDetailsViewController(selectedItem: items[indexPath.row])
+        let viewController = ItemDetailsViewController(selectedItem: itemModels[indexPath.row])
         navigationController?.isNavigationBarHidden = false
         tabBarController?.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(viewController, animated: true)
