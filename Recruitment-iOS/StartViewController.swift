@@ -31,7 +31,7 @@ class StartViewController: UIViewController {
     }
 
     func pushTabBarController() {
-        let tabBarController = TabBarController(nibName: nil, bundle: nil)
+        let tabBarController = TabBarController()
         navigationController?.pushViewController(tabBarController, animated: true)
     }
 }

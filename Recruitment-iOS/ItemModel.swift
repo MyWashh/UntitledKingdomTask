@@ -18,7 +18,7 @@ struct ItemModel {
         guard let name = item["attributes"]?["name"] as? String,
             let colorString = item["attributes"]?["color"] as? String,
             let id = item["id"] as? String else { return nil }
-        
+
         self.id = id
         self.name = name
         self.color = Colors(colorString).uiColor

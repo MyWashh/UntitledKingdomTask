@@ -10,6 +10,7 @@ import UIKit
 
 class ItemDetailsViewController: UIViewController {
     let selectedItem: ItemModel
+    let itemsProvider: ItemsProtocol
 
     let textView: UITextView = {
         let textView = UITextView()
@@ -19,8 +20,9 @@ class ItemDetailsViewController: UIViewController {
         return textView
     }()
 
-    init(selectedItem: ItemModel) {
+    init(selectedItem: ItemModel, itemsProvider: ItemsProtocol) {
         self.selectedItem = selectedItem
+        self.itemsProvider = itemsProvider
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -34,13 +36,9 @@ class ItemDetailsViewController: UIViewController {
         let title = selectedItem.name
         self.title = TitleEditor.modifyTitle(title: title)
         self.view.backgroundColor = selectedItem.color
-        NetworkingManager.sharedManager.downloadItemWithID(selectedItem.id, completion: { item in
-            self.textView.text = item.desc
+        itemsProvider.downloadItemWithID(selectedItem.id, completion: { item in
+                self.textView.text = item.desc
         })
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
     }
 
     func setupLayout() {

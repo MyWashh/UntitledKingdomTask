@@ -1,9 +1,11 @@
 import UIKit
 
 class ItemsSheetCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+    let itemsProvider: ItemsProtocol
     var items: [ItemModel] = []
 
-    init() {
+    init(itemsProvider: ItemsProtocol) {
+        self.itemsProvider = itemsProvider
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 100, height: 100)
         layout.scrollDirection = .vertical
@@ -32,7 +34,7 @@ class ItemsSheetCollectionViewController: UICollectionViewController, UICollecti
         super.viewDidLoad()
         collectionView.register(ItemsSheetCollectionViewCell.self)
         setupLayout()
-        NetworkingManager.sharedManager.downloadItems { items in
+        itemsProvider.downloadItems { items in
             self.items = items
             self.collectionView.reloadData()
         }
@@ -67,7 +69,7 @@ extension ItemsSheetCollectionViewController {
     }
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailsController = ItemDetailsViewController(selectedItem: items[indexPath.row])
+        let detailsController = ItemDetailsViewController(selectedItem: items[indexPath.row], itemsProvider: itemsProvider)
         navigationController?.isNavigationBarHidden = false
         tabBarController?.navigationController?.isNavigationBarHidden = true
         navigationController?.pushViewController(detailsController, animated: true)

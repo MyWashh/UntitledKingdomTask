@@ -9,8 +9,17 @@
 import UIKit
 
 class ItemsListTableViewController: UITableViewController {
-
+    let itemsProvider: ItemsProtocol
     var items: [ItemModel] = []
+
+    init(itemsProvider: ItemsProtocol) {
+        self.itemsProvider = itemsProvider
+        super.init(style: .plain)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -27,7 +36,7 @@ class ItemsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ItemsListTableViewCell.self)
-        NetworkingManager.sharedManager.downloadItems { items in
+        itemsProvider.downloadItems { items in
             self.items = items
             self.tableView.reloadData()
         }
@@ -50,7 +59,7 @@ extension ItemsListTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let viewController = ItemDetailsViewController(selectedItem: items[indexPath.row])
+        let viewController = ItemDetailsViewController(selectedItem: items[indexPath.row], itemsProvider: itemsProvider)
         navigationController?.isNavigationBarHidden = false
         tabBarController?.navigationController?.isNavigationBarHidden = true
         self.navigationController?.pushViewController(viewController, animated: true)

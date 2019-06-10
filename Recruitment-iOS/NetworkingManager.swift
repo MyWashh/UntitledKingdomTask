@@ -7,11 +7,8 @@
 //
 
 import UIKit
-class NetworkingManager: NSObject {
-
-    static var sharedManager = NetworkingManager()
-
-    func downloadItems(completion: @escaping (([ItemModel]) -> Void)) {
+class NetworkingManager: NSObject, ItemsProtocol {
+     func downloadItems(completion: @escaping (([ItemModel]) -> Void)) {
         request(filename: "Items.json") { dictionary in
             guard let itemsDictionary = dictionary["data"] as? [[String: AnyObject]] else { return }
             let items = self.transform(itemsDictionary: itemsDictionary)
@@ -29,7 +26,7 @@ class NetworkingManager: NSObject {
         return items
     }
 
-    func downloadItemWithID(_ id: String, completion: @escaping ((ItemDetailsModel) -> Void)) {
+     func downloadItemWithID(_ id: String, completion: @escaping ((ItemDetailsModel) -> Void)) {
         let filename = "Item\(id).json"
         request(filename: filename) { dictionary in
             guard let data = dictionary["data"]  as? [String: AnyObject],

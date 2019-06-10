@@ -1,17 +1,18 @@
 import UIKit
 
 class TabBarController: UITabBarController {
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    init() {
+        super.init(nibName: nil, bundle: nil)
         setViewControllers(prepareControllers(), animated: true)
     }
 
     func prepareControllers() -> [UIViewController] {
-        let tableViewController = ItemsListTableViewController()
+        let networkingManager = NetworkingManager()
+        let tableViewController = ItemsListTableViewController(itemsProvider: networkingManager)
         tableViewController.title = ControllersTitles.itemsListTableViewController
-        let firstNavigationController = UINavigationController(rootViewController: ItemsListTableViewController())
+        let firstNavigationController = UINavigationController(rootViewController: tableViewController)
 
-        let collectionViewController = ItemsSheetCollectionViewController()
+        let collectionViewController = ItemsSheetCollectionViewController(itemsProvider: networkingManager)
         collectionViewController.title = ControllersTitles.itemsSheetCollectionViewController
         let secondNavigationController = UINavigationController(rootViewController: collectionViewController)
 
