@@ -22,18 +22,49 @@ class TestingNetworkManager: XCTestCase {
         items.removeAll()
     }
 
-    func testExample() {
+    func testItemsDownload() {
         let expectation = self.expectation(description: "Wait for items")
 
-        networkManager?.downloadItems(completion: { items in
-            self.items = items
+        networkManager?.downloadItems(completion: { result in
             expectation.fulfill()
+            switch result {
+            case .success(let items):
+                self.items = items
+                XCTAssertGreaterThan(self.items.count, 0)
+            case .error:
+                XCTAssertEqual(self.items.count, 0)
+            }
         })
         waitForExpectations(timeout: 5, handler: nil)
-        XCTAssertGreaterThan(items.count, 0)
     }
 
-    func testExample2() {
-        XCTAssertEqual(items.count, 0)
+    func testItemDownload() {
+        let expectation = self.expectation(description: "Wait for result")
+
+        networkManager?.downloadItemWithID("2", completion: { result in
+            expectation.fulfill()
+            switch result {
+            case .success(let item):
+                XCTAssertEqual(item.item.color, .red)
+            case .error:
+                XCTAssertTrue(false)
+            }
+        })
+        waitForExpectations(timeout: 5, handler: nil)
+    }
+
+    func testItemDownloadFailure() {
+        let expectation = self.expectation(description: "Wait for result")
+
+        networkManager?.downloadItemWithID("id", completion: { result in
+            expectation.fulfill()
+            switch result {
+            case .success(_):
+                XCTAssertTrue(false)
+            case .error:
+                XCTAssertTrue(true)
+            }
+        })
+        waitForExpectations(timeout: 5, handler: nil)
     }
 }

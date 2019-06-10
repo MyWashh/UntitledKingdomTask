@@ -34,15 +34,24 @@ class ItemsSheetCollectionViewController: UICollectionViewController, UICollecti
         super.viewDidLoad()
         collectionView.register(ItemsSheetCollectionViewCell.self)
         setupLayout()
-        itemsProvider.downloadItems { items in
-            self.items = items
-            self.collectionView.reloadData()
-        }
+        askForItems()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setupNavigationBars()
+    }
+
+    func askForItems() {
+        itemsProvider.downloadItems { result in
+            switch result {
+            case .success(let items):
+                self.items = items
+                self.collectionView.reloadData()
+            case .error:
+                AlertController.showAlert(on: self, message: CommonStrings.downloadError)
+            }
+        }
     }
 
     func setupLayout() {

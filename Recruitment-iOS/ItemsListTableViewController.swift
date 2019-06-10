@@ -36,9 +36,15 @@ class ItemsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ItemsListTableViewCell.self)
-        itemsProvider.downloadItems { items in
-            self.items = items
-            self.tableView.reloadData()
+
+        itemsProvider.downloadItems { result in
+            switch result {
+            case .success(let items):
+                self.items = items
+                self.tableView.reloadData()
+            case .error:
+                AlertController.showAlert(on: self, message: CommonStrings.downloadError)
+            }
         }
     }
 }

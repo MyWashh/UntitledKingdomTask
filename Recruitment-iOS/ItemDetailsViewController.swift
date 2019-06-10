@@ -36,8 +36,17 @@ class ItemDetailsViewController: UIViewController {
         let title = selectedItem.name
         self.title = TitleEditor.modifyTitle(title: title)
         self.view.backgroundColor = selectedItem.color
-        itemsProvider.downloadItemWithID(selectedItem.id, completion: { item in
+        askForItems()
+    }
+
+    func askForItems() {
+        itemsProvider.downloadItemWithID(selectedItem.id, completion: { result in
+            switch result {
+            case .success(let item):
                 self.textView.text = item.desc
+            case .error:
+                AlertController.showAlert(on: self, message: CommonStrings.downloadError)
+            }
         })
     }
 
