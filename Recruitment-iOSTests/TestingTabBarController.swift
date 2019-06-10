@@ -3,7 +3,7 @@ import XCTest
 
 class TestingTabBarController: XCTestCase {
 
-    func testTabBarController() {
+    func testTabBarControllerTabsNumber() {
         let tabBarController = TabBarController()
         XCTAssertEqual(tabBarController.viewControllers?.count, 2)
     }

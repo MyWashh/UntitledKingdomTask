@@ -36,10 +36,10 @@ class ItemDetailsViewController: UIViewController {
         let title = selectedItem.name
         self.title = TitleEditor.modifyTitle(title: title)
         self.view.backgroundColor = selectedItem.color
-        askForItems()
+        askForItem()
     }
 
-    func askForItems() {
+    func askForItem() {
         itemsProvider.downloadItemWithID(selectedItem.id, completion: { result in
             switch result {
             case .success(let item):

@@ -8,7 +8,7 @@
 
 import UIKit
 
-struct ItemModel {
+struct ItemModel: ItemProtocol {
     let name: String
     let color: UIColor
     let id: String
