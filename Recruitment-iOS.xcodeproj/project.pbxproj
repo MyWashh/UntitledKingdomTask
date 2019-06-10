@@ -38,6 +38,9 @@
 		C0FE205822AE6A2E0057270F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE205722AE6A2E0057270F /* Result.swift */; };
 		C0FE205A22AE6D5B0057270F /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE205922AE6D5B0057270F /* AlertController.swift */; };
 		C0FE205C22AE741C0057270F /* DownloadItemsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE205B22AE741C0057270F /* DownloadItemsProtocol.swift */; };
+		C0FE206222AE8C7F0057270F /* TestingTitleEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE206122AE8C7F0057270F /* TestingTitleEditor.swift */; };
+		C0FE206422AE8DD00057270F /* TestingTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE206322AE8DD00057270F /* TestingTabBarController.swift */; };
+		C0FE206622AE8F000057270F /* TestingItemListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE206522AE8F000057270F /* TestingItemListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +89,9 @@
 		C0FE205722AE6A2E0057270F /* Result.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Result.swift; sourceTree = "<group>"; };
 		C0FE205922AE6D5B0057270F /* AlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertController.swift; sourceTree = "<group>"; };
 		C0FE205B22AE741C0057270F /* DownloadItemsProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadItemsProtocol.swift; sourceTree = "<group>"; };
+		C0FE206122AE8C7F0057270F /* TestingTitleEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTitleEditor.swift; sourceTree = "<group>"; };
+		C0FE206322AE8DD00057270F /* TestingTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingTabBarController.swift; sourceTree = "<group>"; };
+		C0FE206522AE8F000057270F /* TestingItemListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingItemListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +228,9 @@
 			isa = PBXGroup;
 			children = (
 				C0FE204D22AE5FDC0057270F /* TestingNetworkManager.swift */,
+				C0FE206122AE8C7F0057270F /* TestingTitleEditor.swift */,
+				C0FE206322AE8DD00057270F /* TestingTabBarController.swift */,
+				C0FE206522AE8F000057270F /* TestingItemListViewController.swift */,
 				C0FE204F22AE5FDC0057270F /* Info.plist */,
 			);
 			path = "Recruitment-iOSTests";
@@ -387,6 +396,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0FE206622AE8F000057270F /* TestingItemListViewController.swift in Sources */,
+				C0FE206222AE8C7F0057270F /* TestingTitleEditor.swift in Sources */,
+				C0FE206422AE8DD00057270F /* TestingTabBarController.swift in Sources */,
 				C0FE204E22AE5FDC0057270F /* TestingNetworkManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

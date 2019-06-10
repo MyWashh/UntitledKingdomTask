@@ -1,11 +1,3 @@
-//
-//  Recruitment_iOSTests.swift
-//  Recruitment-iOSTests
-//
-//  Created by Marcin Michalski on 10/06/2019.
-//  Copyright © 2019 Untitled Kingdom. All rights reserved.
-//
-
 import XCTest
 @testable import Recruitment_iOS
 
@@ -47,7 +39,7 @@ class TestingNetworkManager: XCTestCase {
             case .success(let item):
                 XCTAssertEqual(item.item.color, .red)
             case .error:
-                XCTAssertTrue(false)
+                XCTFail()
             }
         })
         waitForExpectations(timeout: 5, handler: nil)
@@ -60,7 +52,7 @@ class TestingNetworkManager: XCTestCase {
             expectation.fulfill()
             switch result {
             case .success(_):
-                XCTAssertTrue(false)
+                XCTFail()
             case .error:
                 XCTAssertTrue(true)
             }

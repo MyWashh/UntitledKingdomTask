@@ -65,6 +65,7 @@ class ItemsSheetCollectionViewController: UICollectionViewController, UICollecti
     }
 }
 
+// MARK: CollectionView delegate and datasource
 extension ItemsSheetCollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell: ItemsSheetCollectionViewCell = collectionView.dequeueReusableCell(forIndexPath: indexPath)
