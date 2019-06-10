@@ -1,10 +1,10 @@
 import UIKit
 
 class ItemsSheetCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-    let itemsProvider: ItemsProtocol
+    let itemsProvider: DownloadItemsProtocol
     var items: [ItemModel] = []
 
-    init(itemsProvider: ItemsProtocol) {
+    init(itemsProvider: DownloadItemsProtocol) {
         self.itemsProvider = itemsProvider
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = CGSize(width: 100, height: 100)

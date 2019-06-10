@@ -9,10 +9,10 @@
 import UIKit
 
 class ItemsListTableViewController: UITableViewController {
-    let itemsProvider: ItemsProtocol
+    let itemsProvider: DownloadItemsProtocol
     var items: [ItemModel] = []
 
-    init(itemsProvider: ItemsProtocol) {
+    init(itemsProvider: DownloadItemsProtocol) {
         self.itemsProvider = itemsProvider
         super.init(style: .plain)
     }

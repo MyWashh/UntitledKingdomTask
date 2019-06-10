@@ -7,7 +7,7 @@
 //
 
 import UIKit
-class NetworkingManager: NSObject, ItemsProtocol {
+class NetworkingManager: NSObject, DownloadItemsProtocol {
      func downloadItems(completion: @escaping (([ItemModel]) -> Void)) {
         request(filename: "Items.json") { dictionary in
             guard let itemsDictionary = dictionary["data"] as? [[String: AnyObject]] else { return }
