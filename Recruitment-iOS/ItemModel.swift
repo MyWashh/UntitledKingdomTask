@@ -8,14 +8,20 @@
 
 import UIKit
 
-class ItemModel {
+struct ItemModel: ItemProtocol {
+    let name: String
+    let color: UIColor
+    let id: String
+    let previewText: String?
 
-    var name:String
-    var color:UIColor
-    
-    init(name:String, color:UIColor) {
-        self.name  = name
-        self.color = color
+    init?(item: [String: AnyObject]) {
+        guard let name = item["attributes"]?["name"] as? String,
+            let colorString = item["attributes"]?["color"] as? String,
+            let id = item["id"] as? String else { return nil }
+
+        self.id = id
+        self.name = name
+        self.color = Colors(colorString).uiColor
+        self.previewText = item["attributes"]?["preview"] as? String
     }
-    
 }

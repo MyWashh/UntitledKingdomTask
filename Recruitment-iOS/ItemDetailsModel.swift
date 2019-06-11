@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ItemDetailsModel: ItemModel {
+struct ItemDetailsModel: ItemDetailsProtocol {
+    let item: ItemProtocol
+    let desc: String
 
-    var desc:String
-    
-    init(name: String, color: UIColor, desc:String) {
+    init?(item: ItemProtocol, details: [String: AnyObject]) {
+        guard let desc = details["attributes"]?["desc"] as? String else { return nil }
+        self.item = item
         self.desc = desc
-        super.init(name: name, color: color)
     }
-    
 }

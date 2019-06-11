@@ -1,14 +1,11 @@
-//
-//  NetworkingManager.swift
-//  UKiOSTest
-//
-//  Created by Paweł Sporysz on 15.09.2016.
-//  Copyright © 2016 Paweł Sporysz. All rights reserved.
-//
+class ItemsService: DownloadItemsProtocol {
+    let networkManager: NetworkingManager
 
-import UIKit
-class NetworkingManager: NSObject, DownloadItemsProtocol {
-     func downloadItems(completion: @escaping (Result<[ItemProtocol]>) -> Void) {
+    init(networkManager: Net) {
+        self.networkManager = networkManager
+    }
+
+    func downloadItems(completion: @escaping (Result<[ItemModel]>) -> Void) {
         request(filename: "Items.json") { dictionary in
             if let itemsDictionary = dictionary["data"] as? [[String: AnyObject]] {
                 let items = self.transform(itemsDictionary: itemsDictionary)
@@ -19,7 +16,7 @@ class NetworkingManager: NSObject, DownloadItemsProtocol {
         }
     }
 
-    private func transform(itemsDictionary: [[String: AnyObject]]) -> [ItemProtocol] {
+    private func transform(itemsDictionary: [[String: AnyObject]]) -> [ItemModel] {
         var items: [ItemModel] = []
         for item in itemsDictionary {
             if let item = ItemModel(item: item) {
@@ -29,7 +26,7 @@ class NetworkingManager: NSObject, DownloadItemsProtocol {
         return items
     }
 
-     func downloadItemWithID(_ id: String, completion: @escaping (Result<ItemDetailsProtocol>) -> Void) {
+    func downloadItemWithID(_ id: String, completion: @escaping (Result<ItemDetailsModel>) -> Void) {
         let filename = "Item\(id).json"
         request(filename: filename) { dictionary in
             guard let data = dictionary["data"]  as? [String: AnyObject],
@@ -39,16 +36,6 @@ class NetworkingManager: NSObject, DownloadItemsProtocol {
                     return
             }
             completion(.success(itemDetailsModel))
-        }
-    }
-
-    private func request(filename:String, completionBlock:@escaping (Dictionary<String, AnyObject>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            if let dictionary = JSONParser.jsonFromFilename(filename) {
-                completionBlock(dictionary)
-            } else {
-                completionBlock([:])
-            }
         }
     }
 }

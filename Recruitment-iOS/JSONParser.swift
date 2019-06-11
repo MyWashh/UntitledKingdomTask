@@ -9,7 +9,7 @@
 import Foundation
 
 class JSONParser {
-    
+
     static func jsonFromFilename(_ filename:String) -> [String:AnyObject]? {
         guard let filepath = Bundle.main.path(forResource: filename, ofType: "") else { return nil }
         do {
@@ -23,5 +23,5 @@ class JSONParser {
         } catch _ {}
         return nil
     }
-    
+
 }
