@@ -2,14 +2,20 @@ import UIKit
 
 class ItemsSheetCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     let itemsProvider: DownloadItemsProtocol
-    var items: [ItemModel] = []
+    var items: [ItemProtocol] = []
+
+    let layout: UICollectionViewFlowLayout = {
+        let layout = UICollectionViewFlowLayout()
+        let itemWidth = UIScreen.main.bounds.width/2
+        layout.minimumLineSpacing = 0
+        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: itemWidth, height: itemWidth)
+        layout.scrollDirection = .vertical
+        return layout
+    }()
 
     init(itemsProvider: DownloadItemsProtocol) {
         self.itemsProvider = itemsProvider
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
-        layout.scrollDirection = .vertical
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 25)
         super.init(collectionViewLayout: layout)
     }
 
@@ -24,16 +30,10 @@ class ItemsSheetCollectionViewController: UICollectionViewController, UICollecti
         navigationController?.isNavigationBarHidden = true
     }
 
-    override func loadView() {
-        super.loadView()
-        view = UIView()
-        view.addSubview(collectionView)
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.backgroundColor = .white
         collectionView.register(ItemsSheetCollectionViewCell.self)
-        setupLayout()
         askForItems()
     }
 
@@ -52,16 +52,6 @@ class ItemsSheetCollectionViewController: UICollectionViewController, UICollecti
                 AlertController.showAlert(on: self, message: CommonStrings.downloadError)
             }
         }
-    }
-
-    func setupLayout() {
-        view.backgroundColor = .white
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 20).isActive = true
-        collectionView.heightAnchor.constraint(equalToConstant: 350).isActive = true
-        collectionView.widthAnchor.constraint(equalToConstant: 250).isActive = true
-        collectionView.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        collectionView.backgroundColor = .clear
     }
 }
 

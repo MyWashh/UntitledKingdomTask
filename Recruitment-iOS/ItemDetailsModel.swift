@@ -7,12 +7,12 @@
 //
 
 import UIKit
-
-struct ItemDetailsModel {
-    let item: ItemModel
+//TODO: TOTHE DECODABLE
+struct ItemDetailsModel: ItemDetailsProtocol {
+    let item: ItemProtocol
     let desc: String
 
-    init?(item: ItemModel, details: [String: AnyObject]) {
+    init?(item: ItemProtocol, details: [String: AnyObject]) {
         guard let desc = details["attributes"]?["desc"] as? String else { return nil }
         self.item = item
         self.desc = desc

@@ -3,7 +3,7 @@ import XCTest
 
 class TestingNetworkManager: XCTestCase {
     var networkManager: NetworkingManager?
-    var items: [ItemModel] = []
+    var items: [ItemProtocol] = []
 
     override func setUp() {
         networkManager = NetworkingManager()

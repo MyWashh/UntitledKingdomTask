@@ -10,13 +10,13 @@ class TabBarController: UITabBarController {
         let networkingManager = NetworkingManager()
         let tableViewController = ItemsListTableViewController(itemsProvider: networkingManager)
         tableViewController.title = ControllersTitles.itemsListTableViewController
-        let firstNavigationController = UINavigationController(rootViewController: tableViewController)
+        let listTab = UINavigationController(rootViewController: tableViewController)
 
         let collectionViewController = ItemsSheetCollectionViewController(itemsProvider: networkingManager)
         collectionViewController.title = ControllersTitles.itemsSheetCollectionViewController
-        let secondNavigationController = UINavigationController(rootViewController: collectionViewController)
+        let sheetTab = UINavigationController(rootViewController: collectionViewController)
 
-        let controllers = [firstNavigationController, secondNavigationController]
+        let controllers = [listTab, sheetTab]
         return controllers
     }
 

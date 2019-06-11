@@ -34,7 +34,10 @@
 		C03FDD5F22AC5525009EE443 /* ColorsHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD5E22AC5525009EE443 /* ColorsHandler.swift */; };
 		C03FDD6322AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD6222AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift */; };
 		C03FDD6522AD8A20009EE443 /* ItemsListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03FDD6422AD8A20009EE443 /* ItemsListTableViewCell.swift */; };
+		C07A0CF322AEF44B00F9429B /* Mocks.swift in Sources */ = {isa = PBXBuildFile; fileRef = C07A0CF222AEF44B00F9429B /* Mocks.swift */; };
 		C080BCED22AEB4C200DDD4A5 /* ItemProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C080BCEC22AEB4C200DDD4A5 /* ItemProtocol.swift */; };
+		C080BCF022AECC7E00DDD4A5 /* TestingItemsSheetCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C080BCEF22AECC7E00DDD4A5 /* TestingItemsSheetCollectionViewController.swift */; };
+		C0BAF83322AEE2EE0068828F /* TestingItemDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BAF83222AEE2EE0068828F /* TestingItemDetailsViewController.swift */; };
 		C0FE204E22AE5FDC0057270F /* TestingNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE204D22AE5FDC0057270F /* TestingNetworkManager.swift */; };
 		C0FE205822AE6A2E0057270F /* Result.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE205722AE6A2E0057270F /* Result.swift */; };
 		C0FE205A22AE6D5B0057270F /* AlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0FE205922AE6D5B0057270F /* AlertController.swift */; };
@@ -84,7 +87,10 @@
 		C03FDD5E22AC5525009EE443 /* ColorsHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsHandler.swift; sourceTree = "<group>"; };
 		C03FDD6222AD86D6009EE443 /* ItemsSheetCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsSheetCollectionViewCell.swift; sourceTree = "<group>"; };
 		C03FDD6422AD8A20009EE443 /* ItemsListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemsListTableViewCell.swift; sourceTree = "<group>"; };
+		C07A0CF222AEF44B00F9429B /* Mocks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Mocks.swift; sourceTree = "<group>"; };
 		C080BCEC22AEB4C200DDD4A5 /* ItemProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemProtocol.swift; sourceTree = "<group>"; };
+		C080BCEF22AECC7E00DDD4A5 /* TestingItemsSheetCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingItemsSheetCollectionViewController.swift; sourceTree = "<group>"; };
+		C0BAF83222AEE2EE0068828F /* TestingItemDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingItemDetailsViewController.swift; sourceTree = "<group>"; };
 		C0FE204B22AE5FDC0057270F /* Recruitment-iOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Recruitment-iOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0FE204D22AE5FDC0057270F /* TestingNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestingNetworkManager.swift; sourceTree = "<group>"; };
 		C0FE204F22AE5FDC0057270F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -242,6 +248,9 @@
 				C0FE206122AE8C7F0057270F /* TestingTitleEditor.swift */,
 				C0FE206322AE8DD00057270F /* TestingTabBarController.swift */,
 				C0FE206522AE8F000057270F /* TestingItemListViewController.swift */,
+				C080BCEF22AECC7E00DDD4A5 /* TestingItemsSheetCollectionViewController.swift */,
+				C0BAF83222AEE2EE0068828F /* TestingItemDetailsViewController.swift */,
+				C07A0CF222AEF44B00F9429B /* Mocks.swift */,
 				C0FE204F22AE5FDC0057270F /* Info.plist */,
 			);
 			path = "Recruitment-iOSTests";
@@ -410,6 +419,9 @@
 			files = (
 				C0FE206622AE8F000057270F /* TestingItemListViewController.swift in Sources */,
 				C0FE206222AE8C7F0057270F /* TestingTitleEditor.swift in Sources */,
+				C080BCF022AECC7E00DDD4A5 /* TestingItemsSheetCollectionViewController.swift in Sources */,
+				C0BAF83322AEE2EE0068828F /* TestingItemDetailsViewController.swift in Sources */,
+				C07A0CF322AEF44B00F9429B /* Mocks.swift in Sources */,
 				C0FE206422AE8DD00057270F /* TestingTabBarController.swift in Sources */,
 				C0FE204E22AE5FDC0057270F /* TestingNetworkManager.swift in Sources */,
 			);

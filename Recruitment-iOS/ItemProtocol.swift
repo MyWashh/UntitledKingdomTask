@@ -8,6 +8,6 @@ protocol ItemProtocol {
 }
 
 protocol ItemDetailsProtocol {
-    var item: ItemModel { get }
+    var item: ItemProtocol { get }
     var desc: String { get }
 }

@@ -9,7 +9,7 @@
 import UIKit
 
 class ItemDetailsViewController: UIViewController {
-    let selectedItem: ItemModel
+    let selectedItem: ItemProtocol
     let itemsProvider: DownloadItemsProtocol
 
     let textView: UITextView = {
@@ -20,7 +20,7 @@ class ItemDetailsViewController: UIViewController {
         return textView
     }()
 
-    init(selectedItem: ItemModel, itemsProvider: DownloadItemsProtocol) {
+    init(selectedItem: ItemProtocol, itemsProvider: DownloadItemsProtocol) {
         self.selectedItem = selectedItem
         self.itemsProvider = itemsProvider
         super.init(nibName: nil, bundle: nil)

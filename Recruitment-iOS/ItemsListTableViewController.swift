@@ -10,7 +10,7 @@ import UIKit
 
 class ItemsListTableViewController: UITableViewController {
     let itemsProvider: DownloadItemsProtocol
-    var items: [ItemModel] = []
+    var items: [ItemProtocol] = []
 
     init(itemsProvider: DownloadItemsProtocol) {
         self.itemsProvider = itemsProvider
@@ -36,7 +36,10 @@ class ItemsListTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(ItemsListTableViewCell.self)
+        askForItems()
+    }
 
+    func askForItems() {
         itemsProvider.downloadItems { result in
             switch result {
             case .success(let items):
