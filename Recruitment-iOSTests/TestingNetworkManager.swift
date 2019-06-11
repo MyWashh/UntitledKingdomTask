@@ -39,7 +39,7 @@ class TestingNetworkManager: XCTestCase {
             case .success(let item):
                 XCTAssertEqual(item.item.color, .red)
             case .error:
-                XCTFail()
+                XCTFail("Shuldn't result with error")
             }
         })
         waitForExpectations(timeout: 5, handler: nil)
@@ -51,8 +51,8 @@ class TestingNetworkManager: XCTestCase {
         networkManager?.downloadItemWithID("id", completion: { result in
             expectation.fulfill()
             switch result {
-            case .success(_):
-                XCTFail()
+            case .success:
+                XCTFail("Shouldn't succeed with wrong id")
             case .error:
                 XCTAssertTrue(true)
             }

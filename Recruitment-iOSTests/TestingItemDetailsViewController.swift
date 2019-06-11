@@ -5,7 +5,8 @@ class TestingItemDetailsViewController: XCTestCase {
     func testDetails() {
         let itemsProvider = MockItemsProvider()
         itemsProvider.downloadItems { _ in }
-        let controller = ItemDetailsViewController(selectedItem: MockItem(name: "MockName", color: .red, id: "1", previewText: "Test"), itemsProvider: itemsProvider)
+        let item = MockItem(name: "MockName", color: .red, id: "1", previewText: "Test")
+        let controller = ItemDetailsViewController(selectedItem: item, itemsProvider: itemsProvider)
         controller.loadViewIfNeeded()
         XCTAssertEqual(controller.textView.text, "Mocked detail")
     }

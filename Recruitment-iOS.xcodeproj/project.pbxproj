@@ -375,7 +375,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n        if which swiftlint >/dev/null; then\n            cd $SRCROOT/Recruitment-iOS\n            swiftlint\n        else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n        exit 1\n    fi\nfi\n";
+			shellScript = "if [ \"${CONFIGURATION}\" == \"Debug\" ]; then\n        if which swiftlint >/dev/null; then\n            cd /Recruitment-iOS\n            swiftlint\n        else\n        echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\n        exit 1\n    fi\nfi\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 

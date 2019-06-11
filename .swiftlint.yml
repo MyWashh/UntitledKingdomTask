@@ -1,7 +1,5 @@
 excluded:
   - AppDelegate
-  - Resources/Generated
-
 function_parameter_count:
   warning: 6
   error: 11 
@@ -15,3 +13,6 @@ identifier_name:
 
 file_length:
     warning: 300
+
+type_name:
+    max_length: 45
